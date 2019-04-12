@@ -5,6 +5,7 @@ $base-size: 8px;
 // Colors
 $black: black;
 $blue: #2D96EF;
+$green: #4bb54b;
 $gray: #bfbfbf;
 $error: red;
 $normal: black;
@@ -96,11 +97,14 @@ label::after {
   content: "*";
   position: absolute;
 }
-input {
+input,
+textarea {
   background: #EFF1F1;
+  border: 0 solid transparent;
   border-radius: $border-radius;
   font-size: 3rem;
   padding: 4px 8px;
+  width: 30vw;
 }
 .input-holder {
   margin-bottom: 24px;
@@ -117,13 +121,13 @@ input {
 .input-holder span:empty {
   top: 100%;
 }
-.input-holder span ~ input  {
-  border: 0px solid transparent;
+.input-holder span ~ input,
+.input-holder span ~ textarea  {
   color: $error;
   margin-bottom: 12px;
 }
-.input-holder span:empty ~ input  {
-  border: 0px solid transparent;
+.input-holder span:empty ~ input,
+.input-holder span:empty ~ textarea  {
   color: $normal;
   margin-bottom: 0;
 }
@@ -183,7 +187,7 @@ button:active {
 .guestbookForm.success {
   button {
     animation: success 1s ease-in-out 1;
-    background: green;
+    background: $green;
     // transform: scale(1.3);
     &::before {
       content: "SUCCESS";

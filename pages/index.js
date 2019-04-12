@@ -7,6 +7,7 @@ import Footer from '../components/Footer'
 import Formsy from "formsy-react";
 import React, { Component } from 'react'
 import MyInput from '../components/MyInput';
+import MyTextarea from '../components/MyTextarea';
  
 
 export default class App extends React.Component {
@@ -64,7 +65,7 @@ export default class App extends React.Component {
           </div>
           <div className="input-holder">
             <label htmlFor="message">Message</label>
-            <MyInput
+            <MyTextarea
               type="textarea"
               name="message"
               validations={{
