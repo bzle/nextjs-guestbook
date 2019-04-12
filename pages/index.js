@@ -1,5 +1,6 @@
 import "../scss/styles.scss"
 import Head from 'next/head'
+import Link from 'next/link'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 // import fetch from "isomorphic-fetch";
@@ -16,9 +17,9 @@ export default class App extends React.Component {
     this.state = { canSubmit: false };
   }
 
-  // componentDidMount() {
-  //   document.getElementsByClassName('input')[1].type = 'textarea';
-  // }
+  componentDidMount() {
+    
+  }
 
   disableButton() {
     this.setState({ canSubmit: false });
@@ -33,7 +34,12 @@ export default class App extends React.Component {
       method: 'post',
       body: JSON.stringify(model)
     });
-    document.getElementById("guestbookForm").reset();
+    const guestbookForm = document.getElementsByClassName('guestbookForm')[0];
+    guestbookForm.reset();
+    guestbookForm.classList.add("success");
+    setTimeout(function(){
+      guestbookForm.classList.remove("success");
+    }, 3000);
   }
 
   render() {
@@ -44,7 +50,7 @@ export default class App extends React.Component {
         </Head>
         <Header />
         <h1>Write a note</h1>
-        <Formsy id="guestbookForm" onValidSubmit={this.submit} onValid={this.enableButton} onInvalid={this.disableButton}>
+        <Formsy className="guestbookForm" onValidSubmit={this.submit} onValid={this.enableButton} onInvalid={this.disableButton}>
           <div className="input-holder">
             <label htmlFor="name">Name</label>
             <MyInput
@@ -62,14 +68,17 @@ export default class App extends React.Component {
               type="textarea"
               name="message"
               validations={{
-                maxLength: 30
+                maxLength: 100
               }}
-              validationError="Enter 30 or fewer characters"
+              validationError="Enter 100 or fewer characters"
               required
             />
           </div>
           <button type="submit" disabled={!this.state.canSubmit}>Send</button>
         </Formsy>
+        <Link href="/guestbook/">
+          <a class="btn">View guestbook</a>
+        </Link>
         <Footer />
       </div>
     );
