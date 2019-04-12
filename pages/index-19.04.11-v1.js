@@ -1,11 +1,10 @@
+import Formsy from "formsy-react";
+import React, { Component } from 'react'
 import "../scss/styles.scss"
 import Head from 'next/head'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-// import fetch from "isomorphic-fetch";
-import Formsy from "formsy-react";
-import React, { Component } from 'react'
-import MyInput from '../components/MyInput';
+import fetch from "isomorphic-fetch";
  
 
 export default class App extends React.Component {
@@ -15,63 +14,65 @@ export default class App extends React.Component {
     this.enableButton = this.enableButton.bind(this);
     this.state = { canSubmit: false };
   }
-
-  // componentDidMount() {
-  //   document.getElementsByClassName('input')[1].type = 'textarea';
-  // }
-
+ 
   disableButton() {
     this.setState({ canSubmit: false });
   }
-
+ 
   enableButton() {
     this.setState({ canSubmit: true });
   }
-
+ 
   submit(model) {
     fetch('/api/guestbook', {
       method: 'post',
       body: JSON.stringify(model)
     });
-    document.getElementById("guestbookForm").reset();
   }
 
+  onFormSubmit(e) {
+    console.log("0");
+    e.preventDefault();
+    console.log("1");
+  }
+ 
   render() {
     return (
-      <div class="app">
+      <div>
         <Head>
           <title>Guestbook</title>
         </Head>
         <Header />
-        <h1>Write a note</h1>
-        <Formsy id="guestbookForm" onValidSubmit={this.submit} onValid={this.enableButton} onInvalid={this.disableButton}>
-          <div className="input-holder">
-            <label htmlFor="name">Name</label>
-            <MyInput
-            name="name"
-              validations={{
-                maxLength: 10
-              }}
-              validationError="Enter 10 or fewer characters"
-              required
-            />
-          </div>
-          <div className="input-holder">
-            <label htmlFor="message">Message</label>
-            <MyInput
-              type="textarea"
-              name="message"
-              validations={{
-                maxLength: 30
-              }}
-              validationError="Enter 30 or fewer characters"
-              required
-            />
-          </div>
-          <button type="submit" disabled={!this.state.canSubmit}>Send</button>
-        </Formsy>
+        <div className="app">
+          {/* <form className="guestbook-form" onSubmit={this.onFormSubmit} methoddd="POST" actionnn="/api/guestbook"> */}
+          <Formsy onValidSubmit={this.submit} onValid={this.enableButton} onInvalid={this.disableButton}>
+            <h2>Contact</h2>
+            <div className="row">
+              <div className="input input--name">
+                <label htmlFor="name">Name</label>
+                <input name="name" required />
+              </div>
+              <div className="input input--message">
+                <label htmlFor="message">Message</label>
+                <input name="message" required />
+              </div>
+              {/* <div>
+                <MyInput
+                  name="email"
+                  validations="isEmail"
+                  validationError="This is not a valid email"
+                  required
+                />
+              </div> */}
+            </div>
+            {/* <button type="submit">Submit</button> */}
+            <button type="submit" disabled={!this.state.canSubmit}>Submit</button>
+          </Formsy>
+        </div>
         <Footer />
       </div>
+      // <Formsy onValidSubmit={this.submit} onValid={this.enableButton} onInvalid={this.disableButton}>
+      // </Formsy>
     );
   }
 }

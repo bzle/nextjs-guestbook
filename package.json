@@ -10,23 +10,30 @@
     "build": "next build",
     "start": "node ./server"
   },
+  "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "@zeit/next-sass": "^1.0.1",
+    "es6-promise": "^4.2.6",
+    "express": "^4.16.4",
+    "formsy-react": "^1.1.5",
+    "isomorphic-fetch": "^2.2.1",
+    "next": "^8.0.4",
+    "node-css": "^0.1.0",
+    "node-sass": "^4.11.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "standard": "^12.0.1"
+  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/remedyhealth/nextjs-challenge-boilerplate.git"
+    "url": "git+https://github.com/bzle/nextjs-guestbook.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/remedyhealth/nextjs-challenge-boilerplate/issues"
+    "url": "https://github.com/bzle/nextjs-guestbook/issues"
   },
-  "homepage": "https://github.com/remedyhealth/nextjs-challenge-boilerplate#readme",
-  "dependencies": {
-    "express": "^4.16.4",
-    "next": "^7.0.2",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3"
-  },
-  "devDependencies": {
-    "standard": "^12.0.1"
-  }
+  "homepage": "https://github.com/bzle/nextjs-guestbook#readme"
 }

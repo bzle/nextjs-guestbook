@@ -11,6 +11,7 @@ app.prepare().then(() => {
 
   server.post('/api/guestbook', (req, res, next) => {
     // A POSTED REQUEST HERE
+    res.send('Message posted'});
   })
 
   server.get('/api/guestbook', (req, res, next) => {
@@ -26,6 +27,7 @@ app.prepare().then(() => {
   server.listen(3000, (err) => {
     if (err) throw err
     console.log('> Ready on http://localhost:3000')
+    console.log(err);
   })
 }).catch((ex) => {
   console.error(ex.stack)
