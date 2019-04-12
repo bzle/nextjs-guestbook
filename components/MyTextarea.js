@@ -2,7 +2,7 @@
 import { withFormsy } from 'formsy-react';
 import React from 'react';
 
-class MyInput extends React.Component {
+class MyTextarea extends React.Component {
   constructor(props) {
     super(props);
     this.changeValue = this.changeValue.bind(this);
@@ -27,7 +27,7 @@ class MyInput extends React.Component {
           rows="4"
           onChange={this.changeValue}
           type="text"
-          class="input"
+          className="input"
           value={this.props.getValue() || ''}
         />
       </div>
@@ -35,4 +35,4 @@ class MyInput extends React.Component {
   }
 }
 
-export default withFormsy(MyInput);
+export default withFormsy(MyTextarea);

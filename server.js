@@ -10,8 +10,8 @@ app.prepare().then(() => {
   server.use(express.json())
 
   server.post('/api/guestbook', (req, res, next) => {
-    // A POSTED REQUEST HERE
-    res.send('Message posted'});
+    let message = req.body;
+    return res.send('Message posted');
   })
 
   server.get('/api/guestbook', (req, res, next) => {

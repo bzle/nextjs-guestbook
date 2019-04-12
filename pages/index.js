@@ -36,16 +36,16 @@ export default class App extends React.Component {
       body: JSON.stringify(model)
     });
     const guestbookForm = document.getElementsByClassName('guestbookForm')[0];
-    guestbookForm.reset();
     guestbookForm.classList.add("success");
     setTimeout(function(){
+      guestbookForm.reset();
       guestbookForm.classList.remove("success");
-    }, 3000);
+    }, 2000);
   }
 
   render() {
     return (
-      <div class="app">
+      <div className="app">
         <Head>
           <title>Guestbook</title>
         </Head>
@@ -77,8 +77,8 @@ export default class App extends React.Component {
           </div>
           <button type="submit" disabled={!this.state.canSubmit}>Send</button>
         </Formsy>
-        <Link href="/guestbook/">
-          <a class="btn">View guestbook</a>
+        <Link href="/guestbook">
+          <a className="btn">View guestbook</a>
         </Link>
         <Footer />
       </div>

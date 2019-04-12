@@ -26,7 +26,7 @@ class MyInput extends React.Component {
         <input
           onChange={this.changeValue}
           type="text"
-          class="input"
+          className="input"
           value={this.props.getValue() || ''}
         />
       </div>
